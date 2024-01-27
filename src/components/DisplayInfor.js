@@ -1,40 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DisplayInfor.scss";
 import logo from "./../logo.svg";
-
-// class DisPlayInfor extends React.Component {
-//   render() {
-//     console.log('>>> rendered')
-//     const { listUser } = this.props;
-//     return (
-//       <div className="display-infor-container">
-//         {true && (
-//           <>
-//             {listUser.map((user) => {
-//               return (
-//                 <div
-//                   key={user.id}
-//                   className={+user.age >= 35 ? "green" : "red"}
-//                 >
-//                   <div>My name is {user.name}</div>
-//                   <div>My Age is {user.age}</div>
-//                   <div>
-//                     <button
-//                       onClick={() => this.props.handleDeleteUser(user.id)}
-//                     >
-//                       Delete
-//                     </button>
-//                   </div>
-//                   <hr />
-//                 </div>
-//               );
-//             })}
-//           </>
-//         )}
-//       </div>
-//     );
-//   }
-// }
 
 const DisPlayInfor = (props) => {
   const { listUser } = props;
@@ -44,6 +10,15 @@ const DisPlayInfor = (props) => {
   const handleShowHideListUser = () => {
     setShowHideListUser(!isShowHideListUser);
   };
+
+  console.log(">>> render");
+
+  useEffect(() => {
+    if (listUser.length === 0) {
+      alert("delete");
+    }
+    console.log(">>> useEffect");
+  }, [listUser]);
 
   return (
     <div className="display-infor-container">
